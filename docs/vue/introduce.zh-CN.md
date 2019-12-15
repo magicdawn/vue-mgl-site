@@ -1,17 +1,22 @@
 # VueMgl
 
-这里是 Ant Design 的 Vue 实现，开发和服务于企业级后台产品。
+mapbox-gl vue components (map, layers, sources, controls).
 
 <div class="pic-plus">
-  <img width="150" src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg">
+  <div class="mapbox">mapbox-gl-js</div>
   <span>+</span>
-  <img width="160" src="https://cn.vuejs.org/images/logo.png">
+  <img width="160" src="https://cn.vuejs.org/images/logo.png" />
 </div>
 
 <style>
 .pic-plus > * {
   display: inline-block !important;
   vertical-align: middle;
+}
+.pic-plus .mapbox{
+  font-size: 40px;
+  color: #333;
+  font-weight: bold;
 }
 .pic-plus span {
   font-size: 30px;
@@ -137,6 +142,56 @@ ant-design-vue 是 Ant Design 的 Vue 实现，组件的风格与 Ant Design 保
 
 Ant Design Vue 致力于提供给程序员**愉悦**的开发体验。
 
-## 特别感谢
+## 声明
 
-[Ant Design Team](https://github.com/ant-design/ant-design/blob/master/AUTHORS.txt)
+本文档的基础代码拷贝自 [ant-design-vue](https://www.antdv.com)
+
+LICENSE
+
+```
+MIT License
+
+Copyright (c) 2017-present ant-design-vue
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+MIT LICENSE
+
+Copyright (c) 2015-present Alipay.com, https://www.alipay.com/
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+```
