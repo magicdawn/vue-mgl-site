@@ -18,7 +18,7 @@ import GoogleAdsTop from './GoogleAdsTop'
 import GoogleAds from './GoogleAds'
 
 const docsList = [
-  {key: 'introduce', enTitle: 'Ant Design of Vue', title: 'Ant Design of Vue'},
+  {key: 'introduce', enTitle: 'VueMgl', title: 'VueMgl'},
   {key: 'getting-started', enTitle: 'Getting Started', title: '快速上手'},
   {key: 'changelog', enTitle: 'Change Log', title: '更新日志'},
   {key: 'faq', enTitle: 'FAQ', title: '常见问题'},
@@ -138,7 +138,7 @@ export default {
       return docsMenu
     },
     resetDocumentTitle(component, name, isCN) {
-      let titleStr = 'Ant Design Vue'
+      let titleStr = 'VueMgl'
       if (component) {
         const {subtitle, title} = component
         const componentName = isCN ? subtitle + ' ' + title : title
@@ -337,7 +337,7 @@ export default {
                     ''
                   )}
                 </section>
-                <Footer ref='footer' isCN={isCN} />
+                {/* <Footer ref='footer' isCN={isCN} /> */}
               </a-col>
             </a-row>
           </div>

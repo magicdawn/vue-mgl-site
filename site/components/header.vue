@@ -39,8 +39,7 @@ export default {
         <a-row>
           <a-col class='header-left' xxl={4} xl={5} lg={5} md={6} sm={24} xs={24}>
             <router-link to={{path: '/'}} id='logo'>
-              <img alt='logo' height='32' src={logo} />
-              <img alt='logo' height='16' src={antDesignVue} />
+              VueMgl
             </router-link>
             <a-button
               ghost
@@ -88,49 +87,22 @@ export default {
             <a-menu selectedKeys={['components']} mode='horizontal' class='menu-site' id='nav'>
               <a-menu-item key='components'>{isCN ? '组件' : 'Components'}</a-menu-item>
               <a-sub-menu key='Ecosystem' title={isCN ? '生态系统' : 'Ecosystem'}>
-                <a-menu-item key='design'>
-                  <router-link to={{path: isCN ? '/docs/vue/download-cn/' : '/docs/vue/download/'}}>
-                    {isCN ? '设计资源' : 'Design Resources'}
-                  </router-link>
-                </a-menu-item>
-                <a-menu-item key='vscode'>
-                  <a
-                    target='_blank'
-                    href='https://marketplace.visualstudio.com/items?itemName=ant-design-vue.vscode-ant-design-vue-helper'
-                  >
-                    VS Code Extension
-                  </a>
-                </a-menu-item>
-                <a-menu-item key='awesome'>
-                  <a target='_blank' href='https://github.com/vueComponent/ant-design-vue-awesome'>
-                    Awesome
-                  </a>
-                </a-menu-item>
                 <a-menu-item key='github'>
-                  <a target='_blank' href='https://github.com/vueComponent/ant-design-vue'>
-                    GitHub
+                  <a target='_blank' href='https://github.com/magicdawn/vue-mgl'>
+                    VueMgl GitHub
                   </a>
                 </a-menu-item>
-                <a-menu-item key='wechat'>
-                  <a-popover placement='right'>
-                    <template slot='content'>
-                      <img
-                        width='160'
-                        height='160'
-                        alt='wechat'
-                        src='https://qn.antdv.com/wechat.jpeg'
-                      />
-                    </template>
-                    <a>{isCN ? '微信' : 'WeChat'}</a>
-                  </a-popover>
+
+                <a-menu-item key='mapboxgl-github'>
+                  <a target='_blank' href='https://github.com/mapbox/mapbox-gl-js/'>
+                    mapbox-gl GitHub
+                  </a>
                 </a-menu-item>
-                <a-menu-item key='qq'>
-                  <a-popover placement='right'>
-                    <template slot='content'>
-                      <img width='160' height='160' alt='qq' src='https://qn.antdv.com/qq.png' />
-                    </template>
-                    <a>{isCN ? 'QQ(217490093)' : 'QQ(217490093)'}</a>
-                  </a-popover>
+
+                <a-menu-item key='mapbox-gl doc'>
+                  <a target='_blank' href='https://docs.mapbox.com/mapbox-gl-js/api/'>
+                    mapbox-gl Doc
+                  </a>
                 </a-menu-item>
               </a-sub-menu>
               <a-menu-item key='sponsor'>

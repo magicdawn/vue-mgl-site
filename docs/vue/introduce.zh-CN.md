@@ -1,4 +1,4 @@
-# Ant Design of Vue
+# VueMgl
 
 这里是 Ant Design 的 Vue 实现，开发和服务于企业级后台产品。
 
@@ -68,15 +68,15 @@ $ yarn add ant-design-vue
 ## 示例
 
 ```jsx
-import Vue from 'vue';
-import { DatePicker } from 'ant-design-vue';
-Vue.use(DatePicker);
+import Vue from 'vue'
+import {DatePicker} from 'ant-design-vue'
+Vue.use(DatePicker)
 ```
 
 引入样式：
 
 ```jsx
-import 'ant-design-vue/dist/antd.css'; // or 'ant-design-vue/dist/antd.less'
+import 'ant-design-vue/dist/antd.css' // or 'ant-design-vue/dist/antd.less'
 ```
 
 ### 按需加载
@@ -100,14 +100,14 @@ import 'ant-design-vue/dist/antd.css'; // or 'ant-design-vue/dist/antd.less'
 
   ```jsx
   // babel-plugin-import 会帮助你加载 JS 和 CSS
-  import { DatePicker } from 'ant-design-vue';
+  import {DatePicker} from 'ant-design-vue'
   ```
 
 - 手动引入
 
   ```jsx
-  import DatePicker from 'ant-design-vue/lib/date-picker'; // 加载 JS
-  import 'ant-design-vue/lib/date-picker/style/css'; // 加载 CSS
+  import DatePicker from 'ant-design-vue/lib/date-picker' // 加载 JS
+  import 'ant-design-vue/lib/date-picker/style/css' // 加载 CSS
   // import 'ant-design-vue/lib/date-picker/style';         // 加载 LESS
   ```
 
