@@ -257,7 +257,7 @@ export default {
                 >
                   <a-affix>
                     <section class='main-menu-inner'>
-                      <Sponsors isCN={isCN} />
+                      {/* <Sponsors isCN={isCN} /> */}
                       <a-menu
                         class='aside-container menu-site'
                         selectedKeys={[name]}
@@ -276,9 +276,9 @@ export default {
               )}
               <a-col xxl={20} xl={19} lg={19} md={18} sm={24} xs={24}>
                 <section class='main-container main-container-component'>
-                  <GoogleAdsTop key={`GoogleAdsTop_${$route.path}`} />
-                  {!isMobile ? <CarbonAds /> : null}
-                  <GeektimeAds isMobile={isMobile} />
+                  {/* <GoogleAdsTop key={`GoogleAdsTop_${$route.path}`} /> */}
+                  {/* {!isMobile ? <CarbonAds /> : null} */}
+                  {/* <GeektimeAds isMobile={isMobile} /> */}
                   {!isMobile ? (
                     <div class={['toc-affix', isCN ? 'toc-affix-cn' : '']} style='width: 150px;'>
                       {this.getSubMenu(isCN)}
@@ -343,7 +343,7 @@ export default {
           </div>
         </a-locale-provider>
         {name.indexOf('back-top') === -1 ? <a-back-top /> : null}
-        {isCN && <Geektime isMobile={isMobile} />}
+        {/* {isCN && <Geektime isMobile={isMobile} />} */}
       </div>
     )
   },
