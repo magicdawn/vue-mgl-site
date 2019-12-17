@@ -1,10 +1,13 @@
-'use strict'
+import {createRequire} from 'module'
+import {fileURLToPath as fromURL} from 'url'
+const require = createRequire(fromURL(import.meta.url))
+
 const webpack = require('webpack')
 const through2 = require('through2')
 const path = require('path')
 const gulp = require('gulp')
 const readline = require('readline')
-const fs = require('fs')
+const fse = require('fs-extra')
 
 const rimraf = require('rimraf')
 const mkdirp = require('mkdirp')
@@ -48,7 +51,7 @@ function dist(done) {
   })
 }
 
-import obj from '../site/demo.demo.mjs'
+import obj from '../site/demo.mjs'
 const {paramCase} = require('change-case')
 const componentNames = Object.keys(obj).map(paramCase)
 
@@ -56,14 +59,14 @@ const docsArr = ['introduce', 'getting-started', 'changelog', 'faq']
 
 function copyHtml() {
   // 404
-  fs.writeFileSync(
+  fse.writeFileSync(
     path.join(cwd, '_site/404.html'),
-    fs.readFileSync(path.join(cwd, 'site/404.html'))
+    fse.readFileSync(path.join(cwd, 'site/404.html'))
   )
 
-  fs.writeFileSync(
+  fse.writeFileSync(
     path.join(cwd, '_site/index-cn.html'),
-    fs.readFileSync(path.join(cwd, '_site/index.html'))
+    fse.readFileSync(path.join(cwd, '_site/index.html'))
   )
 
   const routeDirs = [
@@ -77,24 +80,57 @@ function copyHtml() {
     ...docsArr.map(name => `docs/${name}-cn`),
   ]
 
-  const contentIndexHtml = fs.readFileSync(path.join(cwd, '_site/index.html'))
+  const contentIndexHtml = fse.readFileSync(path.join(cwd, '_site/index.html'))
   for (let dir of routeDirs) {
-    fs.writeFileSync(path.join(cwd, '_site', dir, 'index.html'), contentIndexHtml)
+    fse.outputFileSync(path.join(cwd, '_site', dir, 'index.html'), contentIndexHtml)
   }
 }
 
-gulp.task(
-  '_site',
-  gulp.series(done => {
-    dist(() => {
-      copyHtml()
-      done()
-    })
+const argv = require('yargs').options({
+  gitee: {
+    type: 'boolean',
+    default: false,
+  },
+}).argv
+const uuidv4 = require('uuid/v4')
+
+const {cd, set, exec, tempdir, ls} = require('shelljs')
+
+async function toGitee() {
+  set('-x')
+  set('-e')
+
+  // temp
+  const dir = tempdir() + '/' + uuidv4()
+  console.log('using tempdir = %s', dir)
+
+  // copy _site to tmp dir
+  fse.copySync(process.cwd() + '/_site', dir)
+  console.log('_site copy done')
+
+  // git
+  cd(dir)
+  exec('git init', {fatal: true})
+  exec('git add --all', {fatal: true})
+  exec(`git commit -am 'update at ${new Date().toLocaleString()}'`, {fatal: true})
+  exec('git remote add gitee git@gitee.com:magicdawn/vue-mgl-site.git', {fatal: true})
+  exec('git push gitee master:gitee-pages -f', {fatal: true})
+
+  // clean up
+  fse.removeSync(dir)
+}
+
+async function main() {
+  await new Promise(r => {
+    dist(r)
   })
-)
-gulp.task(
-  'copy-html',
-  gulp.series(() => {
-    copyHtml()
-  })
-)
+
+  copyHtml()
+
+  // to gitee
+  if (argv.gitee) {
+    toGitee()
+  }
+}
+
+main()

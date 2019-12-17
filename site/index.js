@@ -49,7 +49,11 @@ const i18n = new VueI18n({
   },
 })
 
+let base = '/'
+if (process.env.GITEE) base += 'vue-mgl-site/'
+
 const router = new VueRouter({
+  base,
   mode: 'history',
   fallback: false,
   routes,

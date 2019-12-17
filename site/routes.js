@@ -2,7 +2,7 @@ import Layout from './components/layout.vue'
 import Iframe from './components/iframe.vue'
 // import demoRoutes from './demoRoutes'
 
-const demoRoutes = [
+export const demoRoutes = [
   {
     path: 'antd-alert',
     component: () => import('../demo/antd-alert/index.vue'),
@@ -23,6 +23,7 @@ const demoRoutes = [
 
 export default [
   {
+    name: 'components',
     path: '/components',
     component: Layout,
     props: route => {
@@ -45,6 +46,7 @@ export default [
   },
 
   {
+    name: 'docs',
     path: '/',
     component: Layout,
     props: route => {

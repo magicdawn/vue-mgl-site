@@ -5,10 +5,15 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const merge = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.base.config')
 
+let gitee = false
+if (process.argv.indexOf('--gitee') > -1) {
+  gitee = true
+}
+
 module.exports = merge(baseWebpackConfig, {
   output: {
     path: path.resolve(__dirname, './_site'),
-    publicPath: '/',
+    publicPath: gitee ? '/vue-mgl-site/' : '/',
     filename: '[name].[contenthash:8].js',
     chunkFilename: '[contenthash:8].async.js',
   },
@@ -52,6 +57,7 @@ module.exports = merge(baseWebpackConfig, {
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: '"production"',
+        GITEE: `'${gitee}'`,
       },
     }),
     new HtmlWebpackPlugin({
