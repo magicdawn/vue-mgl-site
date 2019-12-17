@@ -50,8 +50,8 @@ const i18n = new VueI18n({
 })
 
 const router = new VueRouter({
-  mode: 'history',
-  fallback: false,
+  mode: 'hash',
+  // fallback: false,
   routes,
 })
 router.beforeEach((to, from, next) => {

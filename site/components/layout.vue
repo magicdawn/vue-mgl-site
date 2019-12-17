@@ -88,7 +88,7 @@ export default {
   },
   methods: {
     addSubMenu() {
-      if (this.$route.path.indexOf('/docs/vue/') !== -1) {
+      if (this.$route.path.indexOf('/docs/') !== -1) {
         this.$nextTick(() => {
           const menus = []
           const doms = [...this.$refs.doc.querySelectorAll(['h2', 'h3'])]
@@ -128,10 +128,10 @@ export default {
       const docsMenu = []
       docsList.forEach(({key, enTitle, title}, index) => {
         const k = isCN ? `${key}-cn` : key
-        pagesKey.push({name: k, url: `/docs/vue/${k}/`, title: isCN ? title : enTitle})
+        pagesKey.push({name: k, url: `/docs/${k}/`, title: isCN ? title : enTitle})
         docsMenu.push(
           <a-menu-item key={k}>
-            <router-link to={`/docs/vue/${k}/`}>{isCN ? title : enTitle}</router-link>
+            <router-link to={`/docs/${k}/`}>{isCN ? title : enTitle}</router-link>
           </a-menu-item>
         )
       })
