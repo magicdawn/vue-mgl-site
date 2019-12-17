@@ -89,12 +89,12 @@ export default [
       },
       {
         path: '',
-        redirect: '/docs/introduce-cn/',
+        redirect: '/docs/introduce/',
       },
     ],
   },
   {
     path: '/*',
-    redirect: '/docs/introduce-cn/',
+    redirect: '/docs/introduce/',
   },
 ]

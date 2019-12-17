@@ -39,7 +39,7 @@ export default {
         <a-row>
           <a-col class='header-left' xxl={4} xl={5} lg={5} md={6} sm={24} xs={24}>
             <router-link to={{path: '/'}} id='logo'>
-              VueMgl
+              vue-mgl
             </router-link>
             <a-button
               ghost
@@ -89,7 +89,7 @@ export default {
               <a-sub-menu key='Ecosystem' title={isCN ? '生态系统' : 'Ecosystem'}>
                 <a-menu-item key='github'>
                   <a target='_blank' href='https://github.com/magicdawn/vue-mgl'>
-                    VueMgl GitHub
+                    vue-mgl GitHub
                   </a>
                 </a-menu-item>
 

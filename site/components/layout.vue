@@ -18,11 +18,11 @@ import GoogleAdsTop from './GoogleAdsTop'
 import GoogleAds from './GoogleAds'
 
 const docsList = [
-  {key: 'introduce', enTitle: 'VueMgl', title: 'VueMgl'},
+  {key: 'introduce', enTitle: 'vue-mgl', title: 'vue-mgl'},
   {key: 'getting-started', enTitle: 'Getting Started', title: '快速上手'},
   {key: 'changelog', enTitle: 'Change Log', title: '更新日志'},
-  {key: 'faq', enTitle: 'FAQ', title: '常见问题'},
-  {key: 'sponsor', enTitle: 'Sponsor', title: '支持我们'},
+  // {key: 'faq', enTitle: 'FAQ', title: '常见问题'},
+  // {key: 'sponsor', enTitle: 'Sponsor', title: '支持我们'},
 ]
 
 let isMobile = false
@@ -138,7 +138,7 @@ export default {
       return docsMenu
     },
     resetDocumentTitle(component, name, isCN) {
-      let titleStr = 'VueMgl'
+      let titleStr = 'vue-mgl'
       if (component) {
         const {subtitle, title} = component
         const componentName = isCN ? subtitle + ' ' + title : title
@@ -165,7 +165,7 @@ export default {
     const titleMap = {}
     const menuConfig = {
       Map: [],
-      Other: [],
+      // Other: [],
     }
     const pagesKey = []
     let prevPage = null

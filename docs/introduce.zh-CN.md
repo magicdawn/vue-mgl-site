@@ -1,4 +1,4 @@
-# VueMgl
+# vue-mgl
 
 mapbox-gl vue components (map, layers, sources, controls).
 
@@ -27,9 +27,8 @@ mapbox-gl vue components (map, layers, sources, controls).
 
 ## 特性
 
-- 提炼自企业级中后台产品的交互语言和视觉风格。
 - 开箱即用的高质量 Vue 组件。
-- 共享[Ant Design of React](http://ant-design.gitee.io/docs/spec/introduce-cn)设计工具体系。
+- 高性能
 
 ## 支持环境
 
