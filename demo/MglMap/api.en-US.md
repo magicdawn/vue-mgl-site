@@ -7,6 +7,8 @@
 | container                    | `String | HTMLElement` |          |                 |             |
 | minZoom                      | `Number`               |          | `0`             |             |
 | maxZoom                      | `Number`               |          | `22`            |             |
+| minPitch                     | `Number`               |          | `0`             |             |
+| maxPitch                     | `Number`               |          | `60`            |             |
 | mapStyle                     | `String | Object`      | ✔        | `null`          |             |
 | hash                         | `Boolean`              |          | `false`         |             |
 | interactive                  | `Boolean`              |          | `true`          |             |
@@ -18,6 +20,7 @@
 | logoPosition                 | `String`               |          | `"bottom-left"` |             |
 | failIfMajorPerformanceCaveat | `Boolean`              |          | `false`         |             |
 | preserveDrawingBuffer        | `Boolean`              |          | `false`         |             |
+| antialias                    | `Boolean`              |          | `false`         |             |
 | refreshExpiredTiles          | `Boolean`              |          | `true`          |             |
 | maxBounds                    | `Array`                |          |                 |             |
 | scrollZoom                   | `Boolean | Object`     |          | `true`          |             |
@@ -33,6 +36,7 @@
 | bearing                      | `Number`               |          | `0`             |             |
 | pitch                        | `Number`               |          | `0`             |             |
 | bounds                       | `Array | Object`       |          |                 |             |
+| fitBoundsOptions             | `Object`               |          |                 |             |
 | renderWorldCopies            | `Boolean`              |          | `true`          |             |
 | maxTileCacheSize             | `Number`               |          |                 |             |
 | localIdeographFontFamily     | `String`               |          |                 |             |
@@ -40,6 +44,8 @@
 | collectResourceTiming        | `Boolean`              |          | `false`         |             |
 | fadeDuration                 | `Number`               |          | `300`           |             |
 | crossSourceCollisions        | `Boolean`              |          | `true`          |             |
+| accessToken                  | `String`               |          |                 |             |
+| locale                       | `String`               |          |                 |             |
 
 ### events
 
