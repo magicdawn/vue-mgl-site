@@ -50,8 +50,8 @@ const i18n = new VueI18n({
 })
 
 const router = new VueRouter({
-  mode: 'hash',
-  // fallback: false,
+  mode: 'history',
+  fallback: false,
   routes,
 })
 router.beforeEach((to, from, next) => {
@@ -78,3 +78,6 @@ new Vue({
   router,
   store,
 })
+
+// for generate props
+// import '../vue-mgl-tools/generate/props'
