@@ -50,7 +50,7 @@ const i18n = new VueI18n({
 })
 
 let base = '/'
-if (process.env.GITEE) base += 'vue-mgl-site/'
+if (process.env.TARGET_SITE === 'gitee') base += 'vue-mgl-site/'
 
 const router = new VueRouter({
   base,

@@ -54,7 +54,7 @@ module.exports = merge(baseWebpackConfig, {
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: '"production"',
-        GITEE: `'${gitee}'`,
+        TARGET_SITE: `'${process.env.TARGET_SITE || ''}'`,
       },
     }),
     new HtmlWebpackPlugin({
