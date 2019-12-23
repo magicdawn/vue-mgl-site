@@ -5,10 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const merge = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.base.config')
 
-let gitee = false
-if (process.argv.indexOf('--gitee') > -1) {
-  gitee = true
-}
+let gitee = process.env.TARGET_SITE === 'gitee'
 
 module.exports = merge(baseWebpackConfig, {
   output: {

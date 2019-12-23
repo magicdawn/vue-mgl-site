@@ -86,14 +86,7 @@ function copyHtml() {
   }
 }
 
-const argv = require('yargs').options({
-  gitee: {
-    type: 'boolean',
-    default: false,
-  },
-}).argv
 const uuidv4 = require('uuid/v4')
-
 const {cd, set, exec, tempdir, ls} = require('shelljs')
 
 async function toGitee() {
@@ -120,7 +113,19 @@ async function toGitee() {
   fse.removeSync(dir)
 }
 
+const argv = require('yargs').options({
+  gitee: {
+    type: 'boolean',
+    default: false,
+  },
+}).argv
+
 async function main() {
+  console.log(argv)
+  if (argv.gitee) {
+    process.env.TARGET_SITE = 'gitee'
+  }
+
   await new Promise(r => {
     dist(r)
   })
