@@ -14,8 +14,6 @@ import {isZhCN} from '../util'
 import {Provider, create} from 'antd/_util/store'
 import NProgress from 'nprogress'
 import MobileMenu from 'antd/vc-drawer/src/index.js'
-import GoogleAdsTop from './GoogleAdsTop'
-import GoogleAds from './GoogleAds'
 
 const docsList = [
   {key: 'introduce', enTitle: 'vue-mgl', title: 'vue-mgl'},
@@ -276,9 +274,6 @@ export default {
               )}
               <a-col xxl={20} xl={19} lg={19} md={18} sm={24} xs={24}>
                 <section class='main-container main-container-component'>
-                  {/* <GoogleAdsTop key={`GoogleAdsTop_${$route.path}`} /> */}
-                  {/* {!isMobile ? <CarbonAds /> : null} */}
-                  {/* <GeektimeAds isMobile={isMobile} /> */}
                   {!isMobile ? (
                     <div class={['toc-affix', isCN ? 'toc-affix-cn' : '']} style='width: 150px;'>
                       {this.getSubMenu(isCN)}
@@ -313,7 +308,6 @@ export default {
                           ],
                         }}
                       ></router-view>
-                      <GoogleAds key={`GoogleAds_${$route.path}`} />
                     </div>
                   ) : (
                     ''

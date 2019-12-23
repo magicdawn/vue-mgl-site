@@ -36,7 +36,7 @@ mapbox-gl vue components (map, layers, sources, controls).
 
 ## Version
 
-[![npm package](https://img.shields.io/npm/v/ant-design-vue.svg?style=flat-square)](https://www.npmjs.org/package/ant-design-vue)
+[![npm package](https://img.shields.io/npm/v/vue-mgl.svg?style=flat-square)](https://www.npmjs.org/package/vue-mgl)
 
 You can subscribe to this feed for new version notifications: [https://github.com/magicdawn/vue-mgl/releases.atom](https://github.com/magicdawn/vue-mgl/releases.atom)
 

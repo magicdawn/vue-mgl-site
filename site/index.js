@@ -83,5 +83,5 @@ new Vue({
   store,
 })
 
-// for generate props
-// import '../vue-mgl-tools/generate/props'
+// for generate script
+import '../vue-mgl-tools/generate/browser-env'

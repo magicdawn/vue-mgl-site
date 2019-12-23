@@ -2,7 +2,16 @@
  * generate doc for
  */
 
-const tpl = `
+const path = require('path')
+const fs = require('fs-extra')
+const njk = require('nunjucks')
+const ppt = require('puppeteer-core')
+
+njk.configure({autoescape: false})
+
+const tplProps = `
+<!-- Auto generated, do not modify -->
+
 ## API
 
 ### props
@@ -12,7 +21,9 @@ const tpl = `
 {% for p in props -%}
 | {{p.name}} | {{p.type}}  | {{p.required}} | {{p.default}} | {{p.description}} |
 {% endfor %}
+`
 
+const tplEvents = `
 ### events
 
 | event name  | description                   | arguments               |
@@ -20,70 +31,59 @@ const tpl = `
 | event name  | description                   | arguments               |
 `
 
-const njk = require('nunjucks')
+let browser
+async function getBrowserProps(browserFn) {
+  if (!browser) {
+    browser = await ppt.launch({
+      executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
+      // headless: false,
+    })
+  }
 
-njk.configure({autoescape: false})
+  // new page
+  const page = await browser.newPage()
+  await page.goto('http://localhost:3000/docs/getting-started/')
 
-function gen(props) {
-  const propNames = Object.keys(props)
-  const data = propNames.map(name => {
-    const def = props[name]
+  // evaluate
+  const result = await page.evaluate(browserFn)
 
-    let {type, required = false, validator} = def
-    let propDefault = def.default
+  // page close
+  await page.close()
 
-    // e.g String
-    if (typeof type === 'function') {
-      type = type.name
-    } else if (Array.isArray(type)) {
-      type = type.map(C => C.name).join(' | ')
-    }
-    type = '`' + type + '`'
-
-    // default
-    if (typeof propDefault === 'function') {
-      const fnContent = propDefault.toString()
-      let defaultValue
-      try {
-        defaultValue = propDefault()
-      } catch (e) {
-        // noop
-      }
-
-      if (typeof defaultValue !== 'undefined') {
-        propDefault = '`' + JSON.stringify(defaultValue) + '`'
-      } else {
-        propDefault = fnContent
-      }
-    } else if (propDefault || propDefault === 0 || propDefault === false) {
-      propDefault = '`' + JSON.stringify(propDefault) + '`'
-    }
-
-    // required
-    if (required) {
-      required = '✔'
-    } else {
-      required = ''
-    }
-
-    return {
-      name,
-      type,
-      required,
-      default: propDefault,
-      description: '',
-    }
-  })
-
-  const rendered = njk.renderString(tpl, {props: data})
-  return rendered
+  return result
 }
 
-import {globalComponents} from 'vue-mgl'
-window.globalComponents = globalComponents
+/**
+ * file = project path
+ */
 
-let result
+async function write({file, content}) {
+  file = path.join(__dirname, '../../', file)
+  fs.outputFileSync(file, content, 'utf8')
+}
 
-result = gen(globalComponents.MglMap.mixins[0].props)
-console.log(result)
-// window.copy(result)
+async function main() {
+  // map
+  {
+    // fetch
+    const props = await getBrowserProps(() =>
+      window.getPropsData(window.globalComponents.MglMap.mixins[0].props)
+    )
+
+    // render
+    const result = njk.renderString(tplProps, {props})
+
+    //   write
+    const file = 'demo/MglMap/api-props.en-US.md'
+    write({file, content: result})
+    console.log('[done]: %s writed', file)
+  }
+
+  if (browser) {
+    await browser.close()
+  }
+}
+
+if (module === process.mainModule) {
+  main()
+}

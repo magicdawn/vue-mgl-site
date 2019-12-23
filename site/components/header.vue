@@ -3,7 +3,6 @@ import {isZhCN} from '../util'
 import sortBy from 'lodash/sortBy'
 import packageInfo from '../../package.json'
 import logo from '../logo.svg'
-import antDesignVue from '../ant-design-vue.svg'
 
 export default {
   props: {

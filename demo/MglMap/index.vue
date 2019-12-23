@@ -1,8 +1,10 @@
 <script>
 import BasicMap from './basic-map.md'
 
-import CN from './api.zh-CN.md'
-import US from './api.en-US.md'
+import UsProps from './api-props.en-US.md'
+import UsElse from './api-else.en-US.md'
+
+// import CN from './api.zh-CN.md'
 
 const md = {
   cn: `
@@ -33,8 +35,8 @@ export default {
         <BasicMap />
 
         <api>
-          <CN slot='cn' />
-          <US />
+          <UsProps></UsProps>
+          <UsElse></UsElse>
         </api>
       </div>
     )
