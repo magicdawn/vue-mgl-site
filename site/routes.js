@@ -1,5 +1,6 @@
 import Layout from './components/layout.vue'
 import Iframe from './components/iframe.vue'
+import {paramCase} from 'change-case'
 // import demoRoutes from './demoRoutes'
 
 export const demoRoutes = [
@@ -19,6 +20,34 @@ export const demoRoutes = [
     path: 'mgl-map-cn',
     component: () => import('../demo/MglMap/index.vue'),
   },
+
+  ...[
+    'MglControlGroup',
+    'MglNavigationControl',
+    'MglGeolocateControl',
+    'MglAttributionControl',
+    'MglScaleControl',
+    'MglFullscreenControl',
+  ].map(key => {
+    return {
+      path: paramCase(key),
+      component: () => import(`../demo/${key}/index.vue`),
+    }
+  }),
+
+  ...[
+    'MglControlGroup',
+    'MglNavigationControl',
+    'MglGeolocateControl',
+    'MglAttributionControl',
+    'MglScaleControl',
+    'MglFullscreenControl',
+  ].map(key => {
+    return {
+      path: paramCase(key) + '-cn',
+      component: () => import(`../demo/${key}/index.vue`),
+    }
+  }),
 ]
 
 export default [

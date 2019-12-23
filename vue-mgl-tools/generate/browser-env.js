@@ -22,7 +22,7 @@ global.getPropsData = function(props) {
       const fnContent = propDefault.toString()
       let defaultValue
       try {
-        defaultValue = propDefault()
+        defaultValue = propDefault.call({})
       } catch (e) {
         // noop
       }

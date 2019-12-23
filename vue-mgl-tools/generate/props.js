@@ -32,7 +32,7 @@ const tplEvents = `
 `
 
 let browser
-async function getBrowserProps(browserFn) {
+async function getBrowserProps(browserFn, ...args) {
   if (!browser) {
     browser = await ppt.launch({
       executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
@@ -45,7 +45,7 @@ async function getBrowserProps(browserFn) {
   await page.goto('http://localhost:3000/docs/getting-started/')
 
   // evaluate
-  const result = await page.evaluate(browserFn)
+  const result = await page.evaluate(browserFn, ...args)
 
   // page close
   await page.close()
@@ -77,6 +77,42 @@ async function main() {
     const file = 'demo/MglMap/api-props.en-US.md'
     write({file, content: result})
     console.log('[done]: %s writed', file)
+  }
+
+  // controls
+  {
+    const controls = [
+      'MglControlGroup',
+      'MglNavigationControl',
+      'MglGeolocateControl',
+      'MglAttributionControl',
+      'MglScaleControl',
+      'MglFullscreenControl',
+    ]
+
+    for (let key of controls) {
+      const props = await getBrowserProps(key => {
+        return window.getPropsData(window.globalComponents[key].props)
+      }, key)
+
+      const mixinProps = await getBrowserProps(key => {
+        const mixins = window.globalComponents[key].mixins
+        const obj = mixins && mixins[0]
+        const props = (obj && obj.props) || {}
+        return window.getPropsData(props)
+      }, key)
+
+      const allProps = [...mixinProps, ...props]
+
+      // render
+      const result = njk.renderString(tplProps, {props: allProps})
+
+      //   write
+      const file = `demo/${key}/api-props.en-US.md`
+      write({file, content: result})
+      console.log('props for %s: %O', key, allProps)
+      console.log('[done]: %s writed', file)
+    }
   }
 
   if (browser) {
