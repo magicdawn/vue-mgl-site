@@ -44,6 +44,13 @@ export const demoRoutes = [
       component: () => import(`../demo/${key}/index.vue`),
     }
   }),
+
+  ...['MglCustomControl', 'MglFlyToControl', 'MglPitchControl'].map(key => {
+    return {
+      path: paramCase(key),
+      component: () => import(`../demo/${key}/index.vue`),
+    }
+  }),
 ]
 
 export default [

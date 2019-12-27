@@ -69,7 +69,7 @@ async function write({file, content}) {
   }
 }
 
-async function main() {
+const genMap = async () => {
   // map
   {
     // fetch
@@ -93,7 +93,9 @@ async function main() {
     write({file, content: result})
     console.log('[done]: %s writed', file)
   }
+}
 
+const genControls = async () => {
   // controls
   {
     const controls = [
@@ -129,6 +131,43 @@ async function main() {
       console.log('[done]: %s writed', file)
     }
   }
+}
+
+const genCustomControls = async () => {
+  // controls
+  const controls = ['MglCustomControl', 'MglFlyToControl', 'MglPitchControl']
+
+  for (let key of controls) {
+    const props = await getBrowserProps(key => {
+      return window.getPropsData(window.globalComponents[key].props)
+    }, key)
+
+    // const mixinProps = await getBrowserProps(key => {
+    //   const mixins = window.globalComponents[key].mixins
+    //   const obj = mixins && mixins[0]
+    //   const props = (obj && obj.props) || {}
+    //   return window.getPropsData(props)
+    // }, key)
+
+    const allProps = [...props]
+
+    // render
+    const result = njk.renderString(tplProps, {props: allProps})
+
+    //   write
+    const file = `demo/${key}/api-props.en-US.md`
+    write({file, content: result})
+    console.log('props for %s: %O', key, allProps)
+    console.log('[done]: %s writed', file)
+  }
+}
+
+async function main() {
+  // await genMap()
+
+  // await genControls()
+
+  await genCustomControls()
 
   if (browser) {
     await browser.close()
