@@ -12,16 +12,18 @@ pre code {
   border: 1px solid #e9e9e9;
   padding: 16px 32px;
   border-radius: @border-radius-sm;
-  font-size: @font-size-base;
   white-space: pre;
-  font-family: 'Lucida Console', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  // font-family: 'Lucida Console', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  // font-size: @font-size-base;
+  font-family: @code-font-family;
+  font-size: 16px;
 }
 
 code[class*='language-'],
 pre[class*='language-'] {
   color: black;
   background: none;
-  font-family: 'Lucida Console', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  font-family: @code-font-family;
   direction: ltr;
   text-align: left;
   white-space: pre;

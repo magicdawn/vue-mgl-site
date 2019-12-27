@@ -17,6 +17,7 @@ MglMap will be `width: 100%; height: 100%`, U need to give a size to `.map-conta
       :zoom="12"
       :attributionControl="false"
     >
+      <MglGeolocateControl />
     </MglMap>
   </div>
 </template>

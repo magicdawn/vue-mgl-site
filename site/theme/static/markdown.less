@@ -1,6 +1,6 @@
 .markdown {
   color: @site-text-color;
-  font-size: 14px;
+  font-size: @font-size;
   line-height: 2;
 }
 
@@ -22,7 +22,7 @@
   font-weight: 500;
   margin-bottom: 20px;
   margin-top: 8px;
-  font-family: Avenir, @font-family;
+  // font-family: @font-family;
   font-size: 30px;
   font-variant: tabular-nums;
   line-height: 38px;
@@ -43,7 +43,7 @@
 .markdown h5,
 .markdown h6 {
   color: @site-heading-color;
-  font-family: Avenir, @font-family;
+  // font-family: @font-family;
   font-variant: tabular-nums;
   margin: 1.6em 0 0.6em;
   font-weight: 500;
@@ -101,14 +101,16 @@
   background: #f2f4f5;
   padding: 0.2em 0.4em;
   border-radius: 3px;
-  font-size: 0.9em;
   border: 1px solid #eee;
+  font-family: @code-font-family;
+  // font-size: 0.9em;
+  font-size: 0.9em * 1.2;
 }
 
 .markdown pre {
   border-radius: @border-radius-sm;
   background: #f2f4f5;
-  font-family: 'Lucida Console', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  font-family: @code-font-family;
 }
 
 .markdown pre code {
@@ -209,31 +211,33 @@
 .markdown.api-container table {
   font-size: @font-size-base;
   line-height: @line-height-base;
-  font-family: @code-family;
+  font-family: @code-font-family;
   border-width: 0;
   margin: 2em 0;
   th,
   td {
-    padding: 14px 16px;
+    padding: 10px 5px;
     border-width: 1px 0;
     border-color: @border-color-split;
   }
   th {
     border-width: 0 0 2px 0;
   }
+
   td:first-child {
     font-weight: 500;
     width: 20%;
     color: @blue-9;
-  }
-  td:nth-child(3) {
-    width: 22%;
-    font-size: @font-size-base - 1px;
-    color: @magenta-7;
     word-break: break-all;
   }
+  td:nth-child(3) {
+    // width: 22%;
+    font-size: @font-size-base - 1px;
+    color: @magenta-7;
+    // word-break: break-all;
+  }
   td:last-child {
-    width: 13%;
+    // width: 13%;
     font-size: @font-size-base - 1px;
   }
 }

@@ -6,6 +6,8 @@ const path = require('path')
 const fs = require('fs-extra')
 const njk = require('nunjucks')
 const ppt = require('puppeteer-core')
+const {extname} = path
+const {execSync} = require('child_process')
 
 njk.configure({autoescape: false})
 
@@ -60,6 +62,11 @@ async function getBrowserProps(browserFn, ...args) {
 async function write({file, content}) {
   file = path.join(__dirname, '../../', file)
   fs.outputFileSync(file, content, 'utf8')
+
+  if (extname(file) === '.md') {
+    const configFile = __dirname + '/../../prettier.config.js'
+    execSync(`prettier --config ${configFile} --write ${file}`)
+  }
 }
 
 async function main() {
@@ -69,6 +76,14 @@ async function main() {
     const props = await getBrowserProps(() =>
       window.getPropsData(window.globalComponents.MglMap.mixins[0].props)
     )
+
+    const mapOptionsDesc = require('./map/description.js')
+    for (let p of props) {
+      let {name} = p
+      if (name === 'mapStyle') name = 'style'
+      p.description = (mapOptionsDesc[name] && mapOptionsDesc[name].desc) || ''
+      p.description = p.description.replace(/\n/g, '<br />')
+    }
 
     // render
     const result = njk.renderString(tplProps, {props})

@@ -5,7 +5,7 @@ MglMap 组件会自动 `width: 100%; height: 100%`, 需要指定外层 `.map-con
 
 <us>
 #### basic map
-MglMap will be `width: 100%; height: 100%`, U need to give a size to `.map-container`
+`MglControlGroup` will provide `position` for children components
 </us>
 
 ```tpl
@@ -17,6 +17,11 @@ MglMap will be `width: 100%; height: 100%`, U need to give a size to `.map-conta
       :zoom="12"
       :attributionControl="false"
     >
+      <MglControlGroup position='top-right'>
+        <MglNavigationControl />
+        <MglGeolocateControl />
+        <MglFullscreenControl />
+      </MglControlGroup>
     </MglMap>
   </div>
 </template>

@@ -4,8 +4,7 @@ MglMap 组件会自动 `width: 100%; height: 100%`, 需要指定外层 `.map-con
 </cn>
 
 <us>
-#### basic map
-MglMap will be `width: 100%; height: 100%`, U need to give a size to `.map-container`
+#### basic usage
 </us>
 
 ```tpl
@@ -15,8 +14,9 @@ MglMap will be `width: 100%; height: 100%`, U need to give a size to `.map-conta
       :mapStyle="'mapbox://styles/mapbox/streets-zh-v1'"
       :center="{ lng: '116.5429700566', lat: '39.6733741772' }"
       :zoom="12"
-      :attributionControl="false"
+      :attributionControl='false'
     >
+      <MglAttributionControl position='top-left' customAttribution='By vue-mgl' />
     </MglMap>
   </div>
 </template>

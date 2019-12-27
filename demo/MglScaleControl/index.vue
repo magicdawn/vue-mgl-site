@@ -8,15 +8,17 @@ import UsElse from './api-else.en-US.md'
 
 const md = {
   cn: `
-# MglMap
-root map Component
+# MglScaleControl
+
+A ScaleControl control displays the ratio of a distance on the map to the corresponding distance on the ground.
 
 ## 代码演示
 `,
 
   us: `
-# MglMap
-root map Component
+# MglScaleControl
+
+A ScaleControl control displays the ratio of a distance on the map to the corresponding distance on the ground.
 
 ## Examples
 `,
