@@ -162,12 +162,64 @@ const genCustomControls = async () => {
   }
 }
 
+const genUI = async () => {
+  // controls
+  const controls = ['MglMarker', 'MglPopup']
+  for (let key of controls) {
+    const props = await getBrowserProps(key => {
+      return window.getPropsData(window.globalComponents[key].props)
+    }, key)
+
+    const allProps = [...props]
+
+    // render
+    const result = njk.renderString(tplProps, {props: allProps})
+
+    //   write
+    const file = `demo/${key}/api-props.en-US.md`
+    write({file, content: result})
+    console.log('props for %s: %O', key, allProps)
+    console.log('[done]: %s writed', file)
+  }
+}
+const genSourceAndLayer = async () => {
+  // controls
+  const controls = [
+    'MglSource',
+    'MglLayer',
+    'MglImageLayer',
+    'MglVideoLayer',
+    'MglRasterLayer',
+    'MglPolygon',
+  ]
+  for (let key of controls) {
+    const props = await getBrowserProps(key => {
+      return window.getPropsData(window.globalComponents[key].props)
+    }, key)
+
+    const allProps = [...props]
+
+    // render
+    const result = njk.renderString(tplProps, {props: allProps})
+
+    //   write
+    const file = `demo/${key}/api-props.en-US.md`
+    write({file, content: result})
+    console.log('props for %s: %O', key, allProps)
+    console.log('[done]: %s writed', file)
+  }
+}
+
 async function main() {
   // await genMap()
 
   // await genControls()
 
-  await genCustomControls()
+  // await genCustomControls()
+
+  await genUI()
+
+  await genSourceAndLayer()
 
   if (browser) {
     await browser.close()

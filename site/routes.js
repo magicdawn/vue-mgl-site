@@ -3,51 +3,43 @@ import Iframe from './components/iframe.vue'
 import {paramCase} from 'change-case'
 // import demoRoutes from './demoRoutes'
 
-export const demoRoutes = [
-  {
-    path: 'mgl-map',
-    component: () => import('../demo/MglMap/index.vue'),
-  },
-  {
-    path: 'mgl-map-cn',
-    component: () => import('../demo/MglMap/index.vue'),
-  },
-  {
-    path: 'mgl-component-mixin',
-    component: () => import('../demo/MglComponentMixin/index.vue'),
-  },
+const keys = [
+  'MglMap',
+  'MglComponentMixin',
 
-  ...[
-    'MglControlGroup',
-    'MglNavigationControl',
-    'MglGeolocateControl',
-    'MglAttributionControl',
-    'MglScaleControl',
-    'MglFullscreenControl',
-  ].map(key => {
+  'MglControlGroup',
+  'MglNavigationControl',
+  'MglGeolocateControl',
+  'MglAttributionControl',
+  'MglScaleControl',
+  'MglFullscreenControl',
+
+  'MglCustomControl',
+  'MglFlyToControl',
+  'MglPitchControl',
+
+  'MglMarker',
+  'MglPopup',
+
+  'MglSource',
+  'MglLayer',
+  'MglImageLayer',
+  'MglVideoLayer',
+  'MglRasterLayer',
+  'MglPolygon',
+]
+
+export const demoRoutes = [
+  ...keys.map(key => {
     return {
       path: paramCase(key),
       component: () => import(`../demo/${key}/index.vue`),
     }
   }),
 
-  ...[
-    'MglControlGroup',
-    'MglNavigationControl',
-    'MglGeolocateControl',
-    'MglAttributionControl',
-    'MglScaleControl',
-    'MglFullscreenControl',
-  ].map(key => {
+  ...keys.map(key => {
     return {
       path: paramCase(key) + '-cn',
-      component: () => import(`../demo/${key}/index.vue`),
-    }
-  }),
-
-  ...['MglCustomControl', 'MglFlyToControl', 'MglPitchControl'].map(key => {
-    return {
-      path: paramCase(key),
       component: () => import(`../demo/${key}/index.vue`),
     }
   }),
