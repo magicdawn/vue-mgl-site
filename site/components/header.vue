@@ -16,6 +16,9 @@ export default {
   },
   methods: {
     handleClick() {
+      this.$message.warning('中文版没空写, 先看E文的吧~~~')
+      return
+
       const name = this.name
       const path = this.$route.path
       const newName = isZhCN(name) ? name.replace(/-cn\/?$/, '') : `${name}-cn`
