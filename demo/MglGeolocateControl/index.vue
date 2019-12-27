@@ -16,7 +16,7 @@ root map Component
 
   us: `
 # MglMap
-root map Component
+A GeolocateControl control provides a button that uses the browser's geolocation API to locate the user on the map.
 
 ## Examples
 `,
@@ -36,7 +36,7 @@ export default {
 
         <api>
           <UsProps></UsProps>
-          <UsElse></UsElse>
+          {/* <UsElse></UsElse> */}
         </api>
       </div>
     )

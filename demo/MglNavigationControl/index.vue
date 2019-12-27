@@ -16,7 +16,7 @@ root map Component
 
   us: `
 # MglMap
-root map Component
+A NavigationControl control contains zoom buttons and a compass.
 
 ## Examples
 `,
@@ -36,7 +36,7 @@ export default {
 
         <api>
           <UsProps></UsProps>
-          <UsElse></UsElse>
+          {/* <UsElse></UsElse> */}
         </api>
       </div>
     )

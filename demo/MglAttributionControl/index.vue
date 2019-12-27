@@ -8,15 +8,11 @@ import UsElse from './api-else.en-US.md'
 
 const md = {
   cn: `
-# MglMap
-root map Component
-
-## 代码演示
 `,
 
   us: `
-# MglMap
-root map Component
+# MglAttributionControl
+An AttributionControl control presents the map's [attribution information](attribution information).
 
 ## Examples
 `,
@@ -36,7 +32,7 @@ export default {
 
         <api>
           <UsProps></UsProps>
-          <UsElse></UsElse>
+          {/* <UsElse></UsElse> */}
         </api>
       </div>
     )

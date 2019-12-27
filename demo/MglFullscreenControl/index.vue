@@ -9,7 +9,7 @@ import UsElse from './api-else.en-US.md'
 const md = {
   cn: `
 # MglMap
-root map Component
+A FullscreenControl control contains a button for toggling the map in and out of fullscreen mode.
 
 ## 代码演示
 `,
@@ -36,7 +36,7 @@ export default {
 
         <api>
           <UsProps></UsProps>
-          <UsElse></UsElse>
+          {/* <UsElse></UsElse> */}
         </api>
       </div>
     )

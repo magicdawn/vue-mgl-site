@@ -1,24 +1,14 @@
 <script>
-import BasicMap from './basic-map.md'
-
-import UsProps from './api-props.en-US.md'
-import UsElse from './api-else.en-US.md'
-
-// import CN from './api.zh-CN.md'
+import Intro from './intro.en-US.md'
 
 const md = {
-  cn: `
-# MglMap
-root map Component
-
-## 代码演示
-`,
+  cn: ``,
 
   us: `
-# MglMap
-group MglXxxControl
+# MglComponentMixin
+the mixin for all 'MglXxx' under a 'MglMap' context
 
-## Examples
+## Introduction
 `,
 }
 export default {
@@ -32,11 +22,8 @@ export default {
       <div class='page'>
         <md cn={md.cn} us={md.us} />
 
-        <BasicMap />
-
         <api>
-          <UsProps></UsProps>
-          {/* <UsElse></UsElse> */}
+          <Intro></Intro>
         </api>
       </div>
     )

@@ -38,7 +38,7 @@ export default {
 
         <api>
           <UsProps></UsProps>
-          <UsElse></UsElse>
+          {/* <UsElse></UsElse> */}
         </api>
       </div>
     )

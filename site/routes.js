@@ -5,20 +5,16 @@ import {paramCase} from 'change-case'
 
 export const demoRoutes = [
   {
-    path: 'antd-alert',
-    component: () => import('../demo/antd-alert/index.vue'),
-  },
-  {
-    path: 'antd-alert-cn',
-    component: () => import('../demo/antd-alert/index.vue'),
-  },
-  {
     path: 'mgl-map',
     component: () => import('../demo/MglMap/index.vue'),
   },
   {
     path: 'mgl-map-cn',
     component: () => import('../demo/MglMap/index.vue'),
+  },
+  {
+    path: 'mgl-component-mixin',
+    component: () => import('../demo/MglComponentMixin/index.vue'),
   },
 
   ...[
