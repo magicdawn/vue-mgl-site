@@ -9,14 +9,14 @@ import UsElse from './api-else.en-US.md'
 const md = {
   cn: `
 # MglPolygon
-root map Component
+add Polygon to the map
 
 ## 代码演示
 `,
 
   us: `
 # MglPolygon
-root map Component
+add Polygon to the map
 
 ## Examples
 `,
