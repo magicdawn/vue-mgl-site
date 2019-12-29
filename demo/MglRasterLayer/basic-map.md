@@ -11,7 +11,7 @@ Simple setup to add raster/WMS Layer to mapbox-gl
 ```tpl
 <template>
   <div class="page">
-    <div class="map-container">
+    <div class="map-container" ref='mapContainer'>
       <MglMap
         :mapStyle="'mapbox://styles/mapbox/streets-zh-v1'"
         :center="{ lng: '116.5429700566', lat: '39.6733741772' }"
@@ -22,7 +22,22 @@ Simple setup to add raster/WMS Layer to mapbox-gl
           <MglFlyToControl
             :camera='{center: [116.5429700566, 39.6733741772], zoom: 12}'
           />
+          <MglFullscreenControl :container='_self.$el' />
         </MglControlGroup>
+
+        <MglCustomControl position='top-right' :containerProps='{class: `mapboxgl-ctrl`}'>
+          <div class="panel">
+            <div>
+              <input type="radio" value='off' v-model='selected' />off
+            </div>
+            <div>
+              <input type="radio" value='autonavi' v-model='selected' />autonavi
+            </div>
+            <div>
+              <input type="radio" value='google' v-model='selected' />google
+            </div>
+          </div>
+        </MglCustomControl>
 
         <MglRasterLayer
           v-bind='autonavi'
@@ -35,18 +50,6 @@ Simple setup to add raster/WMS Layer to mapbox-gl
           v-if='googleEnabled'
         />
       </MglMap>
-    </div>
-
-    <div class="panel">
-      <div>
-        <input type="radio" value='off' v-model='selected' />off
-      </div>
-      <div>
-        <input type="radio" value='autonavi' v-model='selected' />autonavi
-      </div>
-      <div>
-        <input type="radio" value='google' v-model='selected' />google
-      </div>
     </div>
   </div>
 </template>
@@ -95,9 +98,8 @@ export default {
 }
 
 .panel {
-  position: absolute;
-  top: 10px;
-  right: 10px;
+  margin-top: 10px;
+  margin-right: 10px;
 }
 </style>
 ```
