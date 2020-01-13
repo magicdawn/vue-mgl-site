@@ -34,7 +34,7 @@ const tplEvents = `
 `
 
 let browser
-async function getBrowserProps(browserFn, ...args) {
+async function evaluateInBrowser(browserFn, ...args) {
   if (!browser) {
     browser = await ppt.launch({
       executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
@@ -73,7 +73,7 @@ const genMap = async () => {
   // map
   {
     // fetch
-    const props = await getBrowserProps(() =>
+    const props = await evaluateInBrowser(() =>
       window.getPropsData(window.globalComponents.MglMap.mixins[0].props)
     )
 
@@ -108,11 +108,11 @@ const genControls = async () => {
     ]
 
     for (let key of controls) {
-      const props = await getBrowserProps(key => {
+      const props = await evaluateInBrowser(key => {
         return window.getPropsData(window.globalComponents[key].props)
       }, key)
 
-      const mixinProps = await getBrowserProps(key => {
+      const mixinProps = await evaluateInBrowser(key => {
         const mixins = window.globalComponents[key].mixins
         const obj = mixins && mixins[0]
         const props = (obj && obj.props) || {}
@@ -138,7 +138,7 @@ const genCustomControls = async () => {
   const controls = ['MglCustomControl', 'MglFlyToControl', 'MglPitchControl']
 
   for (let key of controls) {
-    const props = await getBrowserProps(key => {
+    const props = await evaluateInBrowser(key => {
       return window.getPropsData(window.globalComponents[key].props)
     }, key)
 
@@ -166,7 +166,7 @@ const genUI = async () => {
   // controls
   const controls = ['MglMarker', 'MglPopup']
   for (let key of controls) {
-    const props = await getBrowserProps(key => {
+    const props = await evaluateInBrowser(key => {
       return window.getPropsData(window.globalComponents[key].props)
     }, key)
 
@@ -193,7 +193,7 @@ const genSourceAndLayer = async () => {
     'MglPolygon',
   ]
   for (let key of controls) {
-    const props = await getBrowserProps(key => {
+    const props = await evaluateInBrowser(key => {
       return window.getPropsData(window.globalComponents[key].props)
     }, key)
 
@@ -210,6 +210,35 @@ const genSourceAndLayer = async () => {
   }
 }
 
+const genSourceAllowedProps = async () => {
+  const registry = await evaluateInBrowser(() => {
+    return window.MglSourcePropKeysRegistry
+  })
+
+  const list = []
+  for (let [type, props] of Object.entries(registry)) {
+    props = props.map(p => '`' + p + '`')
+    list.push({type, props})
+  }
+
+  const tpl = `
+### Allow props for different types
+
+{% for item in list -%}
+#### type=\`{{item.type}}\`
+
+{% for propItem in item.props -%}
+- {{propItem}}
+{% endfor  %}
+
+{% endfor %}
+  `
+  const file = './demo/MglSource/api-allowed-props.md'
+  const content = njk.renderString(tpl, {list})
+  write({file, content})
+  console.log('[done]: % writed', file)
+}
+
 async function main() {
   // await genMap()
 
@@ -217,9 +246,11 @@ async function main() {
 
   // await genCustomControls()
 
-  await genUI()
+  // await genUI()
 
-  await genSourceAndLayer()
+  // await genSourceAndLayer()
+
+  await genSourceAllowedProps()
 
   if (browser) {
     await browser.close()

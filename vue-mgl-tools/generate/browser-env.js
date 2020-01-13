@@ -1,6 +1,9 @@
 import {globalComponents} from 'vue-mgl'
 window.globalComponents = globalComponents
 
+import {propKeysRegistry} from 'vue-mgl/src/component/MglSource'
+window.MglSourcePropKeysRegistry = propKeysRegistry
+
 global.getPropsData = function(props) {
   const propNames = Object.keys(props)
   const data = propNames.map(name => {

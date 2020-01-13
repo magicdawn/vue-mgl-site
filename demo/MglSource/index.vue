@@ -2,6 +2,7 @@
 import BasicMap from './basic-map.md'
 
 import UsProps from './api-props.en-US.md'
+import AllowedProps from './api-allowed-props.md'
 import UsElse from './api-else.en-US.md'
 
 // import CN from './api.zh-CN.md'
@@ -16,7 +17,7 @@ represents mapbox-gl source
 
   us: `
 # MglSource
-add a source
+represents mapbox-gl source
 
 ## Examples
 `,
@@ -32,10 +33,11 @@ export default {
       <div class='page'>
         <md cn={md.cn} us={md.us} />
 
-        {/* <BasicMap /> */}
+        <BasicMap />
 
         <api>
           <UsProps></UsProps>
+          <AllowedProps />
           {/* <UsElse></UsElse> */}
         </api>
       </div>

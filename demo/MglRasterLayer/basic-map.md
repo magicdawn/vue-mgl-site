@@ -66,7 +66,7 @@ export default {
       },
 
       google: {
-        tiles: ['http://www.google.cn/maps/vt?lyrs=s@729&gl=cn&x={x}&y={y}&z={z}']
+        tiles: ['https://www.google.cn/maps/vt?lyrs=s@729&gl=cn&x={x}&y={y}&z={z}']
       }
     }
   },
