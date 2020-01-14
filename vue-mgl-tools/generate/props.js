@@ -228,7 +228,7 @@ const genSourceAllowedProps = async () => {
 #### type=\`{{item.type}}\`
 
 {% for propItem in item.props -%}
-  {{propItem}} {{' , '}}
+  {{propItem}} {{' , ' if loop.index !== item.props.length}}
 {%- endfor  %}
 
 {% endfor %}
