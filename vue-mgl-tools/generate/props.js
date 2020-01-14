@@ -228,11 +228,15 @@ const genSourceAllowedProps = async () => {
 #### type=\`{{item.type}}\`
 
 {% for propItem in item.props -%}
-- {{propItem}}
-{% endfor  %}
+  {{propItem}} {{' , '}}
+{%- endfor  %}
 
 {% endfor %}
-  `
+`
+  {
+    /* <span style='margin-right: 10px;'>{{propItem}}</span> */
+  }
+
   const file = './demo/MglSource/api-allowed-props.md'
   const content = njk.renderString(tpl, {list})
   write({file, content})
