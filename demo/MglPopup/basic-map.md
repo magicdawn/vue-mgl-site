@@ -1,11 +1,11 @@
 <cn>
 #### 基本地图
-MglMap 组件会自动 `width: 100%; height: 100%`, 需要指定外层 `.map-container` 的大小
+use `MglMarker` & `MglPopup`
 </cn>
 
 <us>
 #### basic map
-MglMap will be `width: 100%; height: 100%`, U need to give a size to `.map-container`
+use `MglMarker` & `MglPopup`
 </us>
 
 ```tpl
@@ -17,13 +17,42 @@ MglMap will be `width: 100%; height: 100%`, U need to give a size to `.map-conta
       :zoom="12"
       :attributionControl="false"
     >
+      <MglPopup :lnglat='[116.5429700566, 39.6733741772]' :show='true'>
+        <div class="popup">
+          I'm the popup content
+        </div>
+      </MglPopup>
     </MglMap>
   </div>
 </template>
 
+<!--
+<template v-slot:marker>
+</template>
+-->
+
 <style>
 .map-container{
   height: 300px;
+}
+
+.marker{
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: red;
+  color: #fff;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup{
+  color: blue;
+  min-width: 200px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 </style>
 ```

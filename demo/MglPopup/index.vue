@@ -9,14 +9,14 @@ import UsElse from './api-else.en-US.md'
 const md = {
   cn: `
 # MglPopup
-root map Component
+represent a \`mgl.Popup\`
 
 ## 代码演示
 `,
 
   us: `
 # MglPopup
-root map Component
+represent a \`mgl.Popup\`
 
 ## Examples
 `,

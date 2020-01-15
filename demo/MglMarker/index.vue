@@ -9,14 +9,14 @@ import UsElse from './api-else.en-US.md'
 const md = {
   cn: `
 # MglMarker
-root map Component
+represent a \`mgl.Marker\`
 
 ## 代码演示
 `,
 
   us: `
 # MglMarker
-root map Component
+represent a \`mgl.Marker\`
 
 ## Examples
 `,
@@ -36,7 +36,7 @@ export default {
 
         <api>
           <UsProps></UsProps>
-          {/* <UsElse></UsElse> */}
+          <UsElse></UsElse>
         </api>
       </div>
     )
